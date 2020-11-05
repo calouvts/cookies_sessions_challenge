@@ -1,5 +1,32 @@
 <?php require 'inc/data/products.php'; ?>
-<?php require 'inc/head.php'; ?>
+<?php require 'inc/head.php';
+
+if (!empty($_SESSION['login'])) {
+ echo "vous êtes identifié en tant que" . $_SESSION['login'];
+   ?>
+    Vous pouvez vous deconnecter <a href="/logout.php">ici</a>
+    <?php
+
+} else {
+    ?>
+    Vous pouvez vous identifier <a href="/login.php">ici</a>
+    <?php
+}
+
+if (!empty($_GET['add_to_cart'])) {
+    $_SESSION['cart'][] = $_GET['add_to_cart'];
+    echo "vous avez ajouté un article dans le panier";
+}
+
+
+/*
+ *
+$_SESSION['panier'][] = 3903;
+$_SESSION['panier'][] = 3903;
+var_dump($_SESSION);
+*/
+
+?>
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>

@@ -1,5 +1,33 @@
 <?php require 'inc/head.php'; ?>
+<?php
+/*
+$tablo = [ ];
+$tablo['tutu'] = 42;
+if (gnagna) {
+    $tablo['titi'] = "truc";
+} else {
+
+    $tablo['titi'] = "";
+}
+
+
+if (empty($tablo['titi']))
+*/
+
+if (!empty($_SESSION['login'])) {
+
+    header("Location: /index.php");
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $_SESSION['login'] = $_POST['loginname'];
+    $_SESSION['cart'] = array();
+    header("Location: /index.php");
+} else {
+
+
+?>
 <div class="container" style="margin-top:40px">
+
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="panel panel-default">
@@ -42,4 +70,6 @@
         </div>
     </div>
 </div>
-<?php require 'inc/foot.php'; ?>
+<?php
+}
+require 'inc/foot.php'; ?>
