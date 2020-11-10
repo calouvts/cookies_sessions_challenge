@@ -51,6 +51,16 @@ session_start();
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
-        <strong>Hello Wilder !</strong>
+
+        <strong>Hello <?php if (!empty($_SESSION['login'])) {
+ echo $_SESSION['login'];
+   } else {
+    ?>
+    Wilder
+    <?php
+}
+  ?></strong>
+
     </div>
 </header>
+
